@@ -48,7 +48,7 @@ string reverse_string_v3(const string& s){
 
 }
 
-class CustomString: public string{
+class CustomString{
     /**
      * Custom class wrapper for string
      * reverse member function for string
