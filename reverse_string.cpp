@@ -10,8 +10,6 @@ string reverse_string_v1(string s){
      * @param s A string 
      * @return reverse of s
      */
-
-
     int len = s.length();
     for(int i = 0; i <  len / 2; i++){
         char temp = s[i];
@@ -20,8 +18,32 @@ string reverse_string_v1(string s){
     }
     return s;
 }
+void reverse_string_v2_helper(string& s, int start, int end){
+    if (end <= start){
+        return;
+    }
+    swap(s[start], s[end]);
+    reverse_string_v2_helper(s, start + 1, end - 1);
+}
+void reverse_string_v2(string& s){
+    /**
+     * reverse the string s in place recursively
+     * 
+     */
+    reverse_string_v2_helper(s, 0, s.length() - 1);
 
-int main(){
+}
+
+void reverse_string_v3(string& s){
+    /**
+     * reverse the string s in place recursively
+     * 
+     */
+    reverse_string_v2_helper(s, 0, s.length() - 1);
+
+}
+
+void test_v1(){
     string s1 = "helloworld";
     string s2 = "w";
     string s3 = "ok";
@@ -32,4 +54,28 @@ int main(){
     assert(reverse_string_v1(s3) == "ko");
     assert(reverse_string_v1(s4) == "wwww");
     assert(reverse_string_v1(s5) == "");
+}
+
+void test_v2(){
+    string s1 = "helloworld";
+    string s2 = "w";
+    string s3 = "ok";
+    string s4 = "wwww";
+    string s5 = "";
+    reverse_string_v2(s1);
+    reverse_string_v2(s2);
+    reverse_string_v2(s3);
+    reverse_string_v2(s4);
+    reverse_string_v2(s5);
+    assert(s1 == "dlrowolleh");
+    assert(s2 == "w");
+    assert(s3 == "ko");
+    assert(s4 == "wwww");
+    assert(s5 == "");
+}
+int main(){
+    
+    test_v1();
+    test_v2();
+    cout << "All tests passed" << endl;
 }
