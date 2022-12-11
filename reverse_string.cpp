@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stack>
 
 using namespace std;
 
@@ -73,6 +74,23 @@ public:
         return result;
     }
 };
+
+string reverse_string_v5(const string& s){
+    /**
+     * reverse the string with stack
+     * 
+     */
+    stack<char> char_stack;
+    for(int i = 0; i < s.length(); i++){
+        char_stack.push(s[i]);
+    }
+    string result = "";
+    while(!char_stack.empty()){
+        result += char_stack.top();
+        char_stack.pop();
+    }
+    return result;
+}
 void test_v1(){
     string s1 = "helloworld";
     string s2 = "w";
@@ -129,11 +147,25 @@ void test_v4(){
     assert(cs5.reverse() == "");
 }
 
+void test_v5(){
+    string s1 = "helloworld";
+    string s2 = "w";
+    string s3 = "ok";
+    string s4 = "wwww";
+    string s5 = "";
+    assert(reverse_string_v5(s1) == "dlrowolleh");
+    assert(reverse_string_v5(s2) == "w");
+    assert(reverse_string_v5(s3) == "ko");
+    assert(reverse_string_v5(s4) == "wwww");
+    assert(reverse_string_v5(s5) == "");
+}
+
 int main(){
     
     test_v1();
     test_v2();
     test_v3();
     test_v4();
+    test_v5();
     cout << "All tests passed" << endl;
 }
