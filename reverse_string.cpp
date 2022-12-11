@@ -5,7 +5,7 @@ using namespace std;
 
 string reverse_string_v1(string s){
     /**
-     * reverse a string s v1
+     * reverse a string s v1 iteratively
      * 
      * @param s A string 
      * @return reverse of s
@@ -28,18 +28,23 @@ void reverse_string_v2_helper(string& s, int start, int end){
 void reverse_string_v2(string& s){
     /**
      * reverse the string s in place recursively
-     * 
+     * @param s A string
      */
     reverse_string_v2_helper(s, 0, s.length() - 1);
 
 }
 
-void reverse_string_v3(string& s){
+string reverse_string_v3(const string& s){
     /**
-     * reverse the string s in place recursively
-     * 
+     * reverse the string s with reverse iterator
+     * @param s A string 
+     * @return reverse of s
      */
-    reverse_string_v2_helper(s, 0, s.length() - 1);
+    string result = "";
+    for(string::const_reverse_iterator it=s.rbegin(); it != s.rend(); it++){
+        result += *it;
+    }
+    return result;
 
 }
 
@@ -73,9 +78,22 @@ void test_v2(){
     assert(s4 == "wwww");
     assert(s5 == "");
 }
+void test_v3(){
+    string s1 = "helloworld";
+    string s2 = "w";
+    string s3 = "ok";
+    string s4 = "wwww";
+    string s5 = "";
+    assert(reverse_string_v3(s1) == "dlrowolleh");
+    assert(reverse_string_v3(s2) == "w");
+    assert(reverse_string_v3(s3) == "ko");
+    assert(reverse_string_v3(s4) == "wwww");
+    assert(reverse_string_v3(s5) == "");
+}
 int main(){
     
     test_v1();
     test_v2();
+    test_v3();
     cout << "All tests passed" << endl;
 }
