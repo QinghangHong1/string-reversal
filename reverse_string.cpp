@@ -48,6 +48,31 @@ string reverse_string_v3(const string& s){
 
 }
 
+class CustomString: public string{
+    /**
+     * Custom class wrapper for string
+     * reverse member function for string
+     * 
+     */
+private:
+    string source;
+public:
+    CustomString(string s){
+        source = s;
+    }
+    const string reverse(){
+        /**
+         * reverse string source
+         * 
+         * return reverse of source, but not modify source
+         */
+        string result = "";
+        for(string::const_reverse_iterator it=source.rbegin(); it != source.rend(); it++){
+            result += *it;
+        }
+        return result;
+    }
+};
 void test_v1(){
     string s1 = "helloworld";
     string s2 = "w";
@@ -90,10 +115,25 @@ void test_v3(){
     assert(reverse_string_v3(s4) == "wwww");
     assert(reverse_string_v3(s5) == "");
 }
+
+void test_v4(){
+    CustomString cs1("helloworld");
+    CustomString cs2("w");
+    CustomString cs3("ok");
+    CustomString cs4("wwww");
+    CustomString cs5("");
+    assert(cs1.reverse() == "dlrowolleh");
+    assert(cs2.reverse() == "w");
+    assert(cs3.reverse() == "ko");
+    assert(cs4.reverse() == "wwww");
+    assert(cs5.reverse() == "");
+}
+
 int main(){
     
     test_v1();
     test_v2();
     test_v3();
+    test_v4();
     cout << "All tests passed" << endl;
 }
