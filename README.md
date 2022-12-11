@@ -22,7 +22,7 @@ Five implementations of string reversals
 
 ```cpp
     // Usage
-    string s = reverse_string_v4("hello");
+    string s = reverse_string_v3("hello");
     cout << s << endl;
 ```
 
