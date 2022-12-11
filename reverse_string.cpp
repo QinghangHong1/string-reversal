@@ -61,7 +61,7 @@ public:
     CustomString(string s){
         source = s;
     }
-    const string reverse(){
+    const string reverse_v4(){
         /**
          * reverse string source
          * 
@@ -140,11 +140,11 @@ void test_v4(){
     CustomString cs3("ok");
     CustomString cs4("wwww");
     CustomString cs5("");
-    assert(cs1.reverse() == "dlrowolleh");
-    assert(cs2.reverse() == "w");
-    assert(cs3.reverse() == "ko");
-    assert(cs4.reverse() == "wwww");
-    assert(cs5.reverse() == "");
+    assert(cs1.reverse_v4() == "dlrowolleh");
+    assert(cs2.reverse_v4() == "w");
+    assert(cs3.reverse_v4() == "ko");
+    assert(cs4.reverse_v4() == "wwww");
+    assert(cs5.reverse_v4() == "");
 }
 
 void test_v5(){
